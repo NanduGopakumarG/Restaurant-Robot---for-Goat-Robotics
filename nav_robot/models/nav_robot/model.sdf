@@ -1,0 +1,742 @@
+<?xml version="1.0"?>
+<sdf version='1.7'>
+  <model name='ackerman'>
+  <static>false</static>
+
+      <pose>0.0 0.0 0 0.0 0.0 0.0</pose>
+      <link name="base_footprint"/>
+
+
+      <joint name="base_joint" type="fixed">
+        <parent>base_footprint</parent>
+        <child>base_link</child>
+        <pose>0 0 0 0 0 0</pose>
+      </joint>
+
+
+      <link name='base_link'>
+
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1580</mass>
+          <inertia>
+            <ixx>1997.86</ixx>
+            <ixy>-3e-05</ixy>
+            <ixz>-1e-06</ixz>
+            <iyy>442.769</iyy>
+            <iyz>62.5206</iyz>
+            <izz>2238.05</izz>
+          </inertia>
+        </inertial>
+
+        <collision name='base_link_fixed_joint_lump__chassis_link_collision'>
+          <pose>0.022342 -0.151846 0.431015 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <!-- <uri>file:///home/neptune/ros2_ws/install/ugv_description/share/ugv_description/meshes/body.stl</uri> -->
+              <uri>model://nav_robot/meshes/body.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>0.2</mu>
+                <mu2>0.2</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+
+        <visual name='base_link_fixed_joint_lump__chassis_link_visual'>
+          <pose>0.022342 -0.151846 0.431015 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <!-- <uri>file:///home/neptune/ros2_ws/install/ugv_description/share/ugv_description/meshes/body.stl</uri> -->
+              <uri>model://nav_robot/meshes/body.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.0 0.0 0.3 1.0</ambient>
+            <diffuse>0.0 0.0 0.3 1.0</diffuse>
+            <specular>0.0 0.0 0.3 1.0</specular>
+            <emissive>0.0 0.0 0.3 1.0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+
+
+      <joint name='bl_axle' type='revolute'>
+        <pose relative_to='base_link'>0.573348 0.718708 0.323697 0 -0 0</pose>
+        <parent>base_link</parent>
+        <child>bl_1</child>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <friction>12.0316</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+
+
+      <link name='bl_1'>
+        <pose relative_to='bl_axle'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.0377 0 -0 0 -0 0</pose>
+          <mass>25</mass>
+          <inertia>
+            <ixx>1.84514</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1.04961</iyy>
+            <iyz>0</iyz>
+            <izz>1.04961</izz>
+          </inertia>
+        </inertial>
+        <collision name='bl_1_collision'>
+          <pose>0 0 0 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <!-- <uri>file:///home/neptune/ros2_ws/install/ugv_description/share/ugv_description/meshes/wheel_rl.stl</uri> -->
+              <uri>model://nav_robot/meshes/wheel_rl.stl</uri>
+
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e15</kp>
+                <kd>1e13</kd>
+              </ode>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>500.7</mu>
+                <mu2>500.7</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+          </surface>
+        </collision>
+
+        <visual name='bl_1_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <!-- <uri>file:///home/neptune/ros2_ws/install/ugv_description/share/ugv_description/meshes/wheel_rl.stl</uri> -->
+              <uri>model://nav_robot/meshes/wheel_rl.stl</uri>
+
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.0 0.0 0.0 1.0</ambient>
+            <diffuse>0.0 0.0 0.0 1.0</diffuse>
+            <specular>0.0 0.0 0.0 1.0</specular>
+            <emissive>0.0 0.0 0.0 1.0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+
+
+      <joint name='br_axle' type='revolute'>
+        <pose>-0.573348 0.718708 0.323697 0 -0 0</pose>
+        <parent>base_link</parent>
+        <child>br_1</child>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <friction>12.0316</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+
+
+      <link name='br_1'>
+        <pose relative_to='br_axle'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.0377 0 -0 0 -0 0</pose>
+          <mass>25</mass>
+          <inertia>
+            <ixx>1.84514</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1.04961</iyy>
+            <iyz>0</iyz>
+            <izz>1.04961</izz>
+          </inertia>
+        </inertial>
+        <collision name='br_1_collision'>
+          <pose>0 0 0 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <!-- <uri>file:///home/neptune/ros2_ws/install/ugv_description/share/ugv_description/meshes/wheel_rr.stl</uri> -->
+              <uri>model://nav_robot/meshes/wheel_rr.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e15</kp>
+                <kd>1e13</kd>
+              </ode>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>500.7</mu>
+                <mu2>500.7</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+          </surface>
+        </collision>
+
+        <visual name='br_1_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <!-- <uri>file:///home/neptune/ros2_ws/install/ugv_description/share/ugv_description/meshes/wheel_rr.stl</uri> -->
+              <uri>model://nav_robot/meshes/wheel_rr.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.0 0.0 0.0 1.0</ambient>
+            <diffuse>0.0 0.0 0.0 1.0</diffuse>
+            <specular>0.0 0.0 0.0 1.0</specular>
+            <emissive>0.0 0.0 0.0 1.0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+
+
+      <joint name='l_steer' type='revolute'>
+        <pose relative_to='base_link'>0.571876 -0.693743 0.323333 0 -0 0</pose>
+        <parent>base_link</parent>
+        <child>l_steer_1</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-0.95</lower>
+            <upper>0.95</upper>
+            <effort>1000</effort>
+            <velocity>100</velocity>
+          </limit>
+          <dynamics>
+            <damping>0.01</damping>
+            <friction>48.0474</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+
+
+      <link name='l_steer_1'>
+        <pose relative_to='l_steer'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <visual name="l_steer_visual">
+          <geometry>
+            <material>
+              <ambient>0.0 0.0 0.0 1.0</ambient>
+              <diffuse>0.0 0.0 0.0 1.0</diffuse>
+              <specular>0.0 0.0 0.0 1.0</specular>
+              <emissive>0.0 0.0 0.0 1.0</emissive>
+            </material>
+          </geometry>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+
+
+      <joint name='fl_axle' type='revolute'>
+        <pose relative_to='l_steer_1'>-0.05 0 0 0 -0 0</pose>
+        <parent>l_steer_1</parent>
+        <child>fl_1</child>
+        <axis>
+          <xyz>-1 0 0</xyz>
+          <dynamics>
+            <friction>48.03161</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+        </axis>
+      </joint>
+
+
+      <link name='fl_1'>
+        <pose relative_to='fl_axle'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='fl_1_collision'>
+          <pose>0 0 0 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <!-- <uri>file:///home/neptune/ros2_ws/install/ugv_description/share/ugv_description/meshes/wheel_fl.stl</uri> -->
+              <uri>model://nav_robot/meshes/wheel_fl.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e15</kp>
+                <kd>1e13</kd>
+              </ode>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>500.1</mu>
+                <mu2>500.1</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='fl_1_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <!-- <uri>file:///home/neptune/ros2_ws/install/ugv_description/share/ugv_description/meshes/wheel_fl.stl</uri> -->
+              <uri>model://nav_robot/meshes/wheel_fl.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.0 0.0 0.0 1.0</ambient>
+            <diffuse>0.0 0.0 0.0 1.0</diffuse>
+            <specular>0.0 0.0 0.0 1.0</specular>
+            <emissive>0.0 0.0 0.0 1.0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+
+
+      <joint name='r_steer' type='revolute'>
+        <pose relative_to='base_link'>-0.571876 -0.693743 0.323333 0 -0 0</pose>
+        <parent>base_link</parent>
+        <child>r_steer_1</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-0.95</lower>
+            <upper>0.95</upper>
+            <effort>1000</effort>
+            <velocity>100</velocity>
+          </limit>
+          <dynamics>
+            <damping>0.01</damping>
+            <friction>48.0474</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+
+
+      <link name='r_steer_1'>
+        <pose relative_to='r_steer'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <visual name="r_steer_visual">
+          <geometry>
+            <material>
+              <ambient>0.0 0.0 0.0 1.0</ambient>
+              <diffuse>0.0 0.0 0.0 1.0</diffuse>
+              <specular>0.0 0.0 0.0 1.0</specular>
+              <emissive>0.0 0.0 0.0 1.0</emissive>
+            </material>
+          </geometry>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+
+
+      <joint name='fr_axle' type='revolute'>
+        <pose relative_to='r_steer_1'>0.05 0 0 0 -0 0</pose>
+        <parent>r_steer_1</parent>
+        <child>fr_1</child>
+        <axis>
+          <xyz>-1 0 0</xyz>
+          <dynamics>
+            <friction>48.0474</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+        </axis>
+      </joint>
+
+      <link name="imu_link">
+        <gravity>true</gravity>
+        <sensor name="bmb_imu" type="imu">
+          <always_on>true</always_on>
+          <update_rate>100</update_rate>
+          <visualize>true</visualize>
+          <imu>
+            <orientation>
+              <x>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>2e-3</stddev>
+                </noise>
+              </x>
+              <y>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>2e-3</stddev>
+                </noise>
+              </y>
+              <z>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>2e-3</stddev>
+                </noise>
+              </z>
+            </orientation>
+            <angular_velocity>
+              <x>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>2e-4</stddev>
+                </noise>
+              </x>
+              <y>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>2e-4</stddev>
+                </noise>
+              </y>
+              <z>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>2e-4</stddev>
+                </noise>
+              </z>
+            </angular_velocity>
+            <linear_acceleration>
+              <x>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>1.7e-2</stddev>
+                </noise>
+              </x>
+              <y>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>1.7e-2</stddev>
+                </noise>
+              </y>
+              <z>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>1.7e-2</stddev>
+                </noise>
+              </z>
+            </linear_acceleration>
+          </imu>
+          <plugin name="basic_mobile_bot_imu" filename="libgazebo_ros_imu_sensor.so">
+            <initial_orientation_as_reference>false</initial_orientation_as_reference>
+            <frame_name>imu_link</frame_name>
+            <ros>
+              <namespace>/imu</namespace>
+              <remapping>~/out:=data</remapping>
+            </ros>
+          </plugin>
+        </sensor>
+      </link>
+
+
+      <link name='fr_1'>
+        <pose relative_to='fr_axle'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='fr_1_collision'>
+          <pose>0 0 0 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <!-- <uri>file:///home/neptune/ros2_ws/install/ugv_description/share/ugv_description/meshes/wheel_fr.stl</uri> -->
+              <uri>model://nav_robot/meshes/wheel_fr.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e15</kp>
+                <kd>1e13</kd>
+              </ode>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>500.7</mu>
+                <mu2>500.7</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='fr_1_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <!-- <uri>file:///home/neptune/ros2_ws/install/ugv_description/share/ugv_description/meshes/wheel_fr.stl</uri> -->
+              <uri>model://nav_robot/meshes/wheel_fr.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.0 0.0 0.0 1.0</ambient>
+            <diffuse>0.0 0.0 0.0 1.0</diffuse>
+            <specular>0.0 0.0 0.0 1.0</specular>
+            <emissive>0.0 0.0 0.0 1.0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+
+
+      <static>0</static>
+      <plugin name='ackermann_drive' filename='libgazebo_ros_ackermann_drive.so'>
+        <update_rate>100.0</update_rate>
+        <front_left_joint>fl_axle</front_left_joint>
+        <front_right_joint>fr_axle</front_right_joint>
+        <rear_left_joint>bl_axle</rear_left_joint>
+        <rear_right_joint>br_axle</rear_right_joint>
+        <left_steering_joint>l_steer</left_steering_joint>
+        <right_steering_joint>r_steer</right_steering_joint>
+        <steering_wheel_joint/>
+        <max_steer>0.85</max_steer>
+        <max_steering_angle>7.85</max_steering_angle>
+        <max_speed>20</max_speed>
+        <left_steering_pid_gain>4000 0 1</left_steering_pid_gain>
+        <left_steering_i_range>0 0</left_steering_i_range>
+        <right_steering_pid_gain>4000 0 1</right_steering_pid_gain>
+        <right_steering_i_range>0 0</right_steering_i_range>
+        <linear_velocity_pid_gain>4000 0 1</linear_velocity_pid_gain>
+        <linear_velocity_i_range>0 0</linear_velocity_i_range>
+        <publish_odom>true</publish_odom>
+        <publish_odom_tf>true</publish_odom_tf>
+        <publish_wheel_tf>true</publish_wheel_tf>
+        <publish_distance>true</publish_distance>
+        <odometry_topic>odom</odometry_topic>
+        <odometry_frame>odom</odometry_frame>
+        <robot_base_frame>base_footprint</robot_base_frame>
+        <ros>
+          <remapping>odom:=wheel/odometry</remapping>
+        </ros>
+      </plugin>
+
+      <plugin name="basic_mobile_bot_joint_state" filename="libgazebo_ros_joint_state_publisher.so">
+        <ros>
+          <remapping>~/out:=joint_states</remapping>
+        </ros>
+        <update_rate>30</update_rate>
+        <joint_name>fr_axle</joint_name>
+        <joint_name>fl_axle</joint_name>
+        <joint_name>l_steer</joint_name>
+        <joint_name>r_steer</joint_name>
+        <joint_name>bl_axle</joint_name>
+        <joint_name>br_axle</joint_name>
+      </plugin>  
+
+
+      <link name="lidar_link">    
+        <inertial>
+          <pose>0.215 0 0.13 0 0 0</pose>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0.000</ixy>
+            <ixz>0.000</ixz>
+            <iyy>0.001</iyy>
+            <iyz>0.000</iyz>
+            <izz>0.001</izz>
+          </inertia>
+          <mass>0.114</mass>
+        </inertial>
+    
+        <collision name="lidar_collision">
+          <pose>0.015 -0.56 0.94 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.1708</radius>
+              <length>0.11</length>
+            </cylinder>
+          </geometry>
+        </collision>
+    
+        <visual name="lidar_visual">
+          <pose>0.015 -0.56 0.94 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.1708</radius>
+              <length>0.11</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.0 0.0 0.0 1.0</ambient>
+            <diffuse>0.0 0.0 0.0 1.0</diffuse>
+            <specular>0.0 0.0 0.0 1.0</specular>
+            <emissive>0.0 0.0 0.0 1.0</emissive>
+          </material>
+        </visual>
+    
+        <sensor name="lidar" type="ray">
+          <pose>0.015 -0.56 0.94 0 0 0</pose>
+          <always_on>true</always_on>
+          <visualize>true</visualize>
+          <update_rate>5</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>120</samples>
+                <resolution>1.000000</resolution>
+                <min_angle>-3.14159</min_angle>
+                <max_angle>3.14159</max_angle>
+              </horizontal>
+            </scan>
+            <range>
+              <min>0.3</min>
+              <max>15.0</max>
+              <resolution>0.015</resolution>
+            </range>
+            <noise>
+              <type>gaussian</type>
+              <mean>0.0</mean>
+              <stddev>0.01</stddev>
+            </noise>
+          </ray>
+          <plugin name="scan" filename="libgazebo_ros_ray_sensor.so">
+            <ros>
+              <remapping>~/out:=scan</remapping>
+            </ros>
+            <output_type>sensor_msgs/LaserScan</output_type>
+            <frame_name>lidar_link</frame_name>
+          </plugin>
+        </sensor>
+      </link>
+
+
+
+      <joint name='lidar_joint' type='fixed'>
+        <pose>0 0 0 0 0 0</pose>
+        <parent>base_link</parent>
+        <child>lidar_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+        </axis>
+      </joint>
+      
+      <pose>0 0 0 0 -0 0</pose>
+    </model>
+
+</sdf>
