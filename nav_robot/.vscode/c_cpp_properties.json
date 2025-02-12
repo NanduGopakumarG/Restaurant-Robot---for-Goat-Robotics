@@ -1,0 +1,27 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/neptune/ros2_ws/install/prius_msgs/include/**",
+        "/opt/ros/foxy/include/**",
+        "/home/neptune/ros2_ws/src/basic_mobile_robot/include/**",
+        "/home/neptune/ros2_ws/src/example_model/include/**",
+        "/home/neptune/ros2_ws/src/nav_robot/include/**",
+        "/home/neptune/ros2_ws/src/nav_rover/include/**",
+        "/home/neptune/ros2_ws/src/sam_bot_desc/include/**",
+        "/home/neptune/ros2_ws/src/ugv_description/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
